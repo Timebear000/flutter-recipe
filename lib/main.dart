@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_recipe/screen/GeoLocatorView.dart';
+import 'package:flutter_recipe/screen/url_lucher.dart';
 import 'package:flutter_recipe/screen/webViewTest.dart';
 import 'package:flutter_recipe/webview/webviews.dart';
 
@@ -38,6 +39,16 @@ class MyApp extends StatelessWidget {
                 );
               },
               child: Text("GeoLocation"),
+            ),
+            RaisedButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => KakaoMapLaucher(),
+                  ),
+                );
+              },
+              child: Text("url_laucher"),
             ),
           ],
         ),

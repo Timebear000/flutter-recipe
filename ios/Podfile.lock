@@ -1,28 +1,58 @@
 PODS:
+  - "app_settings (3.0.0+1)":
+    - Flutter
   - Flutter (1.0.0)
   - geolocator (6.2.0):
+    - Flutter
+  - launch_review (0.0.1):
+    - Flutter
+  - "permission_handler (5.1.0+2)":
+    - Flutter
+  - store_redirect (0.0.1):
+    - Flutter
+  - url_launcher (0.0.1):
     - Flutter
   - webview_flutter (0.0.1):
     - Flutter
 
 DEPENDENCIES:
+  - app_settings (from `.symlinks/plugins/app_settings/ios`)
   - Flutter (from `Flutter`)
   - geolocator (from `.symlinks/plugins/geolocator/ios`)
+  - launch_review (from `.symlinks/plugins/launch_review/ios`)
+  - permission_handler (from `.symlinks/plugins/permission_handler/ios`)
+  - store_redirect (from `.symlinks/plugins/store_redirect/ios`)
+  - url_launcher (from `.symlinks/plugins/url_launcher/ios`)
   - webview_flutter (from `.symlinks/plugins/webview_flutter/ios`)
 
 EXTERNAL SOURCES:
+  app_settings:
+    :path: ".symlinks/plugins/app_settings/ios"
   Flutter:
     :path: Flutter
   geolocator:
     :path: ".symlinks/plugins/geolocator/ios"
+  launch_review:
+    :path: ".symlinks/plugins/launch_review/ios"
+  permission_handler:
+    :path: ".symlinks/plugins/permission_handler/ios"
+  store_redirect:
+    :path: ".symlinks/plugins/store_redirect/ios"
+  url_launcher:
+    :path: ".symlinks/plugins/url_launcher/ios"
   webview_flutter:
     :path: ".symlinks/plugins/webview_flutter/ios"
 
 SPEC CHECKSUMS:
+  app_settings: d103828c9f5d515c4df9ee754dabd443f7cedcf3
   Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
   geolocator: f5e3de65e241caba7ce3e8a618803387bda73384
+  launch_review: 75d5a956ba8eaa493e9c9d4bf4c05e505e8d5ed0
+  permission_handler: ccb20a9fad0ee9b1314a52b70b76b473c5f8dab0
+  store_redirect: 2977747cf81689a39bd62c248c2deacb7a0d131e
+  url_launcher: 6fef411d543ceb26efce54b05a0a40bfd74cbbef
   webview_flutter: 9f491a9b5a66f2573946a389b2677987b0ff8c0b
 
-PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
+PODFILE CHECKSUM: 0e1eb98ac981effa381a850b046375aa07213b69
 
 COCOAPODS: 1.10.1

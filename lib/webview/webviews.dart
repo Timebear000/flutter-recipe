@@ -22,7 +22,7 @@ class _WebViewExampleState extends State<WebViewExample1> {
   Widget build(BuildContext context) {
     return WebView(
       initialUrl:
-          'http://localhost:5000/api/v1/maps/location/map/?lat=37.54699&lon=127.09598',
+          'https://dev.shuiiing.kr/api/v1/maps/location/map/?lat=37.54699&lon=127.09598',
       javascriptMode: JavascriptMode.unrestricted,
       key: Key("webview1"),
     );

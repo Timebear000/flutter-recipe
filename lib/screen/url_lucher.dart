@@ -2,14 +2,15 @@ import 'package:app_settings/app_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:store_redirect/store_redirect.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-class GeoLocationApp extends StatefulWidget {
+class KakaoMapLaucher extends StatefulWidget {
   @override
-  _GeoLocationAppState createState() => _GeoLocationAppState();
+  _KakaoMapLaucherState createState() => _KakaoMapLaucherState();
 }
 
-class _GeoLocationAppState extends State<GeoLocationApp> {
-  var locationMessage = "";
+class _KakaoMapLaucherState extends State<KakaoMapLaucher> {
   void getCurrentLocation() async {
     var position = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
@@ -19,9 +20,25 @@ class _GeoLocationAppState extends State<GeoLocationApp> {
     // print(lastPosition);
     var lat = position.latitude;
     var long = position.longitude;
-    setState(() {
-      locationMessage = '$lat , $long';
-    });
+
+    var des_lat = "35.0986474";
+    var des_lon = "129.019162";
+
+    _launchURL(lat, long, des_lat, des_lon);
+  }
+
+  void _launchURL(s_lat, s_lon, d_lat, d_lon) async {
+    String url =
+        "kakaomap://route?sp=${s_lat},${s_lon}&ep=${d_lat},${d_lon}8&by=CAR";
+    //String register = "kakaomap://route?";
+    if (await canLaunch("kakaomap://open?page=placeSearch")) {
+      await launch(url);
+    } else {
+      StoreRedirect.redirect(
+          androidAppId: "net.daum.android.map", iOSAppId: "304608425");
+      // LaunchReview.launch(
+      //     androidAppId: "net.daum.android.map", iOSAppId: "304608425");
+    }
   }
 
   //CheckPermission GeoLocatter
@@ -42,43 +59,17 @@ class _GeoLocationAppState extends State<GeoLocationApp> {
     return permistterd;
   }
 
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
       appBar: AppBar(
-        title: Text(
-          "Geo Location Testing",
-        ),
-        backgroundColor: Colors.black,
+        title: Text("Kakao Map + Call"),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           // crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Icon(
-              Icons.location_on,
-              size: 80.0,
-              color: Colors.white,
-            ),
-            SizedBox(
-              height: 20.0,
-            ),
-            Text(
-              "Get user Location",
-              style: TextStyle(
-                fontSize: 26.0,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-            ),
             SizedBox(height: 20.0),
-            // Text()
-            Text(
-              locationMessage,
-              style: TextStyle(color: Colors.white),
-            ),
             FlatButton(
               onPressed: () async {
                 // AppSettings.openAppSettings();
@@ -89,8 +80,18 @@ class _GeoLocationAppState extends State<GeoLocationApp> {
                 }
               },
               child: Text(
-                "Get Current Location",
-                style: TextStyle(color: Colors.white),
+                "Open KaKao Maps",
+              ),
+            ),
+            SizedBox(height: 20.0),
+            FlatButton(
+              onPressed: () async {
+                // AppSettings.openAppSettings();
+                await launch("tel:010-9926-7403");
+                print("1234");
+              },
+              child: Text(
+                "Call Number",
               ),
             ),
           ],
