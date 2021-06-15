@@ -28,6 +28,7 @@ class _GeoLocationAppState extends State<GeoLocationApp> {
   //CheckPermission GeoLocatter
   checkPermission_geolocator() async {
     Map<Permission, PermissionStatus> statues = await [Permission.location];
+    
   }
 
   @override
